@@ -46,7 +46,7 @@
 
 ## :dart: About
 
-Describe your project
+A Wikipedia-like online encyclopedia.
 
 ## :sparkles: Features
 
