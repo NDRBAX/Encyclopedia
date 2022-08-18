@@ -1,0 +1,7 @@
+{
+    "html.format.enable": false,
+    "html.format.templating": false,
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "mblode.pretty-formatter",
+    "pretty-formatter.bracePadding": false
+}
