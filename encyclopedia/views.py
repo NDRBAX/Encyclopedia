@@ -1,4 +1,8 @@
+from email import utils
 import re
+import secrets
+from django import forms
+from django.contrib import messages
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -10,10 +14,15 @@ markdowner = Markdown()
 list_entries = util.list_entries()
 lower_list = [entry.lower() for entry in list_entries]
 
+class CreateEntryForm(forms.Form):
+    title = forms.CharField(label="" , widget=forms.TextInput(attrs={"placeholder": "Title", "class":"form-control", }))
+    content = forms.CharField(label="", widget=forms.Textarea(attrs={"placeholder": "Content", "class":"form-control"}))
+class EditEntryForm(forms.Form):
+    content = forms.CharField(label="", widget=forms.Textarea(attrs={"placeholder": "Content"}))
 
 def index(request):
     return render(request, "encyclopedia/index.html", {
-        "entries": list_entries
+        "entries": list_entries,
     })
 
 def entry(request, title):
@@ -27,10 +36,10 @@ def entry(request, title):
         })
     # If an entry does not exist, display error page requested page was not found
     else:
-        return render(request, "encyclopedia/error.html", {
-            "error_message": f"{title} page was not found"
+        messages.error(request, f"{title} was not found")
+        return render(request, "encyclopedia/index.html", {
+            "entries": list_entries,
         })
-      
 
 def search(request):
     query = request.GET.get("q", "")
@@ -49,6 +58,61 @@ def search(request):
             })
         # If no entries are found, display error page
         else:
-            return render(request, "encyclopedia/error.html", {
-                "error_message": f"{query} was not found"
+            messages.error(request, f"{query} was not found")
+            return render(request, "encyclopedia/index.html", {
+                "entries": list_entries,
             })
+
+def create(request):
+    if request.method == "GET":
+        return render(request, "encyclopedia/createPage.html", {
+            "createPageForm": CreateEntryForm()
+        })
+    elif request.method == "POST":
+        form = CreateEntryForm(request.POST)
+        if form.is_valid():
+            title = form.cleaned_data["title"]
+            content = form.cleaned_data["content"]
+            if title.lower() in lower_list:
+                messages.error(request, f"{title} already exists")
+                return render(request, "encyclopedia/createPage.html", {
+                     "createPageForm": CreateEntryForm(),
+                })
+            else:
+                util.save_entry(title, content)
+                list_entries.append(title)
+                lower_list.append(title.lower())
+                html_content = markdowner.convert(content)
+                messages.success(request, "New post has been created.")
+                return render(request, "encyclopedia/entry.html", {
+                "title": title,
+                "content": html_content
+                })
+        else:
+            return render(request, "encyclopedia/createPage.html", {
+                "createPageForm": form
+            })
+
+def edit(request, title):
+    if request.method == "GET":
+        return render(request, "encyclopedia/editPage.html", {
+            "editPageForm": EditEntryForm(initial={ "content": util.get_entry(title)}),
+            "title": title
+        })
+    elif request.method == "POST":
+        form = EditEntryForm(request.POST)
+        if form.is_valid():
+            content = form.cleaned_data["content"]
+            util.save_entry(title, content)
+            messages.success(request, f"{title} has been successfully edited." )
+            return HttpResponseRedirect(reverse("entry", args=[title]))
+        else:
+            return render(request, "encyclopedia/editPage.html", {
+                "editPageForm": form,
+                "title": title
+            })
+
+
+def random(request):
+    random_entry = secrets.choice(list_entries)
+    return HttpResponseRedirect(reverse("entry", args=[random_entry]))

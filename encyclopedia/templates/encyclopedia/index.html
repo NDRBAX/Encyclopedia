@@ -5,12 +5,16 @@
 {% endblock %} 
 
 {% block body %}
+
+<div class="col-lg-5">
     <h1>All Pages</h1>
-    <ul>
+    <ul class="list-group list-group-flush">
         {% for entry in entries %}
-        <li>
+        <li class="list-group-item row">
             <a href="wiki/{{ entry }}"> {{ entry }} </a>
         </li>
+        
         {% endfor %}
     </ul>
+</div>
 {% endblock %}
