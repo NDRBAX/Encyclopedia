@@ -6,8 +6,29 @@
 
 {% block body %}
 
-<div class="col-lg-5">
-    <h1>All Pages</h1>
+
+
+<div class="container-fluid">
+    <h1 class="mb-4">All Pages</h1>
+    <div class="row">
+    {% for entry in entries %}
+      <div class="col">
+        <div class="card border-info mb-3" style="max-width: 30rem;">
+            <a href="wiki/{{ entry }}"> 
+            <div class="card-header"> {{ entry }} </div>
+            <div class="card-body text-info">
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      {% endfor %}
+    </div>
+</div>
+    
+
+    {% comment %} <h1>All Pages</h1>
     <ul class="list-group list-group-flush">
         {% for entry in entries %}
         <li class="list-group-item row">
@@ -15,6 +36,6 @@
         </li>
         
         {% endfor %}
-    </ul>
-</div>
+    </ul> {% endcomment %}
+
 {% endblock %}
