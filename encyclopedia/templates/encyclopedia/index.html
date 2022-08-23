@@ -1,41 +1,26 @@
 {% extends "encyclopedia/layout.html" %} 
+{% load static %}
 
 {% block title %} 
     Encyclopedia 
 {% endblock %} 
 
 {% block body %}
-
-
-
 <div class="container-fluid">
     <h1 class="mb-4">All Pages</h1>
     <div class="row">
-    {% for entry in entries %}
+    {% for entry, desc in context %}
       <div class="col">
-        <div class="card border-info mb-3" style="max-width: 30rem;">
-            <a href="wiki/{{ entry }}"> 
-            <div class="card-header"> {{ entry }} </div>
+        <div class="card border-info mb-4" style="max-width: 30rem; ">
+            <a style="text-decoration:none;" href="wiki/{{ entry }}"> 
+            <div class="card-header text-center"> {{ entry }} </div>
             <div class="card-body text-info">
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <p style="overflow: hidden; display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;">{{ desc }}</p>
             </div>
           </div>
         </a>
       </div>
-
       {% endfor %}
     </div>
 </div>
-    
-
-    {% comment %} <h1>All Pages</h1>
-    <ul class="list-group list-group-flush">
-        {% for entry in entries %}
-        <li class="list-group-item row">
-            <a href="wiki/{{ entry }}"> {{ entry }} </a>
-        </li>
-        
-        {% endfor %}
-    </ul> {% endcomment %}
-
 {% endblock %}

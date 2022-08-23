@@ -21,8 +21,13 @@ class EditEntryForm(forms.Form):
     content = forms.CharField(label="", widget=forms.Textarea(attrs={"placeholder": "Content"}))
 
 def index(request):
+    description = []
+    for entry in list_entries:
+        content = util.get_entry(entry)
+        description.append(content)
+    zipped_content = zip(list_entries, description)
     return render(request, "encyclopedia/index.html", {
-        "entries": list_entries,
+        "context": zipped_content
     })
 
 def entry(request, title):
