@@ -6,7 +6,7 @@
   <!-- <a href="https://wiki.netlify.app">Demo</a> -->
 </div>
 
-<h1 align="center">Wiki</h1>
+<h1 align="center">Encyclopedia</h1>
 
 <p align="center">
   <img alt="Github top language" src="https://img.shields.io/github/languages/top/NDRBAX/wiki?color=56BEB8">
