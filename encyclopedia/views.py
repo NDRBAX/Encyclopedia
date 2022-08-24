@@ -12,7 +12,7 @@ from . import util
 markdowner = Markdown()
 list_entries = util.list_entries()
 lower_list = [entry.lower() for entry in list_entries]
-description = []
+
 
 
 class CreateEntryForm(forms.Form):
@@ -22,9 +22,9 @@ class EditEntryForm(forms.Form):
     content = forms.CharField(label="", widget=forms.Textarea(attrs={"placeholder": "Content"}))
 
 def index(request):
+    description = []
     for entry in list_entries:
-        content = util.get_entry(entry)
-        description.append(content)
+        description.append(markdowner.convert(util.get_entry(entry)))
         zipped_content = zip(list_entries, description)
     return render(request, "encyclopedia/index.html", {
         "context": zipped_content,
@@ -42,14 +42,14 @@ def entry(request, title):
         })
     # If an entry does not exist, display error page requested page was not found
     else:
-        messages.error(request, f"{title} was not found")
+        description = []
+        messages.error(request, f'No results found for "{title}"')
         for entry in list_entries:
-            content = util.get_entry(entry)
-            description.append(content)
+            description.append(markdowner.convert(util.get_entry(entry)))
             zipped_content = zip(list_entries, description)
         return render(request, "encyclopedia/index.html", {
             "context": zipped_content,
-            "page_name": "Others articles"
+            "page_name": "Others articles that may be of interest"
         })
 
 def search(request):
@@ -64,24 +64,24 @@ def search(request):
         r = re.compile(f".*{query}", re.IGNORECASE)
         filtered_list = list(filter(r.match, list_entries))
         if len(filtered_list) > 0:
-            for entry in list_entries:
-                content = util.get_entry(entry)
-                description.append(content)
+            description = []
+            for entry in filtered_list:
+                description.append(markdowner.convert(util.get_entry(entry)))
                 zipped_content = zip(filtered_list, description)
             return render(request, "encyclopedia/index.html", {
                 "context": zipped_content,
-                "page_name": f'Results that contains "{query}"'
+                "page_name": f'Results found for "{query}"'
             })
         # If no entries are found, display error page
         else:
+            description = []
             for entry in list_entries:
-                content = util.get_entry(entry)
-                description.append(content)
+                description.append(markdowner.convert(util.get_entry(entry)))
                 zipped_content = zip(list_entries, description)
-            messages.error(request, f"{query} was not found")
+            messages.error(request, f'No results found for "{query}"')
             return render(request, "encyclopedia/index.html", {
                 "context": zipped_content,
-                "page_name": "Others articles"
+                "page_name": "Others articles that may be of interest"
             })
 
 def create(request):

@@ -14,12 +14,12 @@
     <h1 class="mb-4">{{ page_name }}</h1>
     <div class="row">
     {% for entry, desc in context %}
-      <div class="col">
-        <div class="card border-info mb-4" style="max-width: 30rem; ">
+      <div class="col-3">
+        <div class="card border-info mb-4" style="max-width: 40rem; ">
             <a style="text-decoration:none;" href="wiki/{{ entry }}"> 
             <div class="card-header text-center"> {{ entry }} </div>
             <div class="card-body text-info">
-                    <p style="overflow: hidden; display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;">{{ desc }}</p>
+                <p  style="overflow: hidden; display: -webkit-box;-webkit-line-clamp: 4;-webkit-box-orient: vertical; margin:6px;">{{ desc|striptags }}</p>
             </div>
           </div>
         </a>
