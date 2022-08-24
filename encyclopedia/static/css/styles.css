@@ -8,7 +8,8 @@ code {
     white-space: pre;
 }
 
-h1 {
+h1,
+h4 {
     margin-top: 0;
     padding-top: 10px;
     padding-bottom: 20px;
@@ -17,6 +18,16 @@ h1 {
 textarea {
     height: 90vh;
     width: 80%;
+}
+
+.badge {
+    padding: 10px;
+    font-weight: lighter;
+    font-size: medium;
+}
+
+.badge:hover {
+    background-color: #11b0c9;
 }
 
 .main {
@@ -36,6 +47,7 @@ textarea {
 div.sticky {
     position: sticky;
     top: 0;
+    z-index: 100;
 }
 
 .card {

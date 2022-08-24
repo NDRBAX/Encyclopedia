@@ -4,7 +4,7 @@
     <nav class="navbar navbar-dark justify-content-center ">
         <a class="navbar-brand" href="{% url 'random' %}">
             Encyclopedia
-            <img src="{% static 'encyclopedia.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">
+            <img src="{% static 'assets/encyclopedia.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">
         </a>
         </nav>
     
@@ -13,8 +13,8 @@
     </form>
     
     <div class="list-group bg-dark">
-        <a class="list-group-item list-group-item-action list-group-item-dark" href="{% url 'index' %}">Home</a>
-        <a class="list-group-item list-group-item-action list-group-item-dark" href="{% url 'createPage' %}">Create New Page</a>
-        <a class="list-group-item list-group-item-action list-group-item-dark" href="{% url 'random' %}">Random Page</a>
+        <a class="list-group-item list-group-item-action" href="{% url 'index' %}">Home</a>
+        <a class="list-group-item list-group-item-action" href="{% url 'createPage' %}">Create New Page</a>
+        <a class="list-group-item list-group-item-action " href="{% url 'random' %}">Random Page</a>
     </div>
 </div>

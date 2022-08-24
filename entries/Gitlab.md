@@ -2,19 +2,7 @@ GitLab Inc. is an open-core company that provides GitLab, a DevOps software pack
 
 Since its founding, GitLab has been centered around remote work. GitLab is one of the largest all-remote companies in the world.[citation needed] GitLab has an estimated 30 million registered users, with 1 million being active licensed users.
 
-## Contents
-
-1.  Company overview
-    - History
-    - IPO
-2.  Acquisitions
-3.	Application
-4.	See also
-5.	References
-6.	External links
-
-
-## Company overview
+#### Company overview
 
 GitLab Inc. was founded around the pre-existing GitLab software project. It is a limited liability corporation, officially launched by Sytse Sijbrandij and Dmytro Zaporozhets in 2014.
 
