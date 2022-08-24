@@ -10,23 +10,7 @@
     <body>
         <div class="container-fluid">
             <div class="row">
-                <div class="sidebar col-lg-2 col-md-3 bg-dark">
-                    <nav class="navbar navbar-dark justify-content-center ">
-                        <a class="navbar-brand" href="{% url 'random' %}">
-                            Encyclopedia
-                          <img src="{% static 'encyclopedia.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">
-                        </a>
-                      </nav>
-
-                    <form action="{% url 'search' %}" method="GET">
-                        <input class="form-control mb-4 mt-3" type="text" name="q" placeholder="Search Encyclopedia">
-                    </form>
-                    <div class="list-group bg-dark">
-                        <a class="list-group-item list-group-item-action list-group-item-dark" href="{% url 'index' %}">Home</a>
-                        <a class="list-group-item list-group-item-action list-group-item-dark" href="{% url 'createPage' %}">Create New Page</a>
-                        <a class="list-group-item list-group-item-action list-group-item-dark" href="{% url 'random' %}">Random Page</a>
-                    </div>
-
+                <div class="sidebar col-lg-2 col-md-3 bg-dark" style="min-height:100vh; height:auto;">
                     {% block nav %}
                     {% endblock %}
                 </div>
@@ -35,6 +19,7 @@
                     {% block body %}
                     {% endblock %}
                 </div>
+            </div>
         </div>
     </div>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
