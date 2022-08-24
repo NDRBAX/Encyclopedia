@@ -78,11 +78,10 @@ Examples of such restrictions include:
 *   JavaScript can easily communicate over the net to the server where the current page came from. But its ability to receive data from other sites/domains is crippled. Though possible, it requires explicit agreement (expressed in HTTP headers) from the remote side. Once again, that’s a safety limitation.
     
 
-![](/article/intro/limitations.svg)
 
 Such limitations do not exist if JavaScript is used outside of the browser, for example on a server. Modern browsers also allow plugins/extensions which may ask for extended permissions.
 
-[What makes JavaScript unique?](#what-makes-javascript-unique)
+What makes JavaScript unique?
 --------------------------------------------------------------
 
 There are at least _three_ great things about JavaScript:
@@ -97,7 +96,7 @@ That’s what makes JavaScript unique. That’s why it’s the most widespread t
 
 That said, JavaScript can be used to create servers, mobile applications, etc.
 
-[Languages “over” JavaScript](#languages-over-javascript)
+Languages “over” JavaScript
 ---------------------------------------------------------
 
 The syntax of JavaScript does not suit everyone’s needs. Different people want different features.

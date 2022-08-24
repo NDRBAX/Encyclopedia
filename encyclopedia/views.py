@@ -1,4 +1,3 @@
-from email import utils
 import re
 import secrets
 from django import forms

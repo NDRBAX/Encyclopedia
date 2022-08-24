@@ -25,11 +25,17 @@ textarea {
 
 .sidebar {
     height: auto;
+    min-height: 100vh;
     padding: 20px;
 }
 
 .sidebar h2 {
     margin-top: 5px;
+}
+
+div.sticky {
+    position: sticky;
+    top: 0;
 }
 
 .card {

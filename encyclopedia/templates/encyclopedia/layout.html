@@ -10,9 +10,8 @@
     <body>
         <div class="container-fluid">
             <div class="row">
-                <div class="sidebar col-lg-2 col-md-3 bg-dark" style="min-height:100vh; height:auto;">
-                    {% block nav %}
-                    {% endblock %}
+                <div class="sidebar col-lg-2 col-md-3 bg-dark">
+                    {% include 'encyclopedia/nav.html' %}
                 </div>
                 <div class="main col-lg-10 col-md-9 ">
                     {% include 'encyclopedia/messages.html' %}
