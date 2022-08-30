@@ -75,9 +75,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'wiki.wsgi.application'
 
-ALLOWED_HOSTS = ['.vercel.app', # Allow *.vercel.app
-                 # '127.0.0.1'  Allow local
-] 
+ALLOWED_HOSTS = ['.vercel.app', '.now.sh']
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
@@ -127,6 +125,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 
 MESSAGE_TAGS = {
         messages.SUCCESS: 'alert-success',
