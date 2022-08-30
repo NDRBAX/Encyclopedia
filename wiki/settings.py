@@ -76,7 +76,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'wiki.wsgi.application'
 
 ALLOWED_HOSTS = ['.vercel.app', # Allow *.vercel.app
-                 '127.0.0.1' # Allow local
+                 # '127.0.0.1'  Allow local
 ] 
 
 # Database
