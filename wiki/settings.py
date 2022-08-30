@@ -75,6 +75,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'wiki.wsgi.application'
 
+ALLOWED_HOSTS = ['.vercel.app',
+                 '127.0.0.1'   
+                    ] # Allow *.vercel.app
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
