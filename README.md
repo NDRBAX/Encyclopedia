@@ -59,10 +59,16 @@ Before starting :checkered_flag:, you need to have [Python](https://www.python.o
 
 ```bash
 # Clone this project
-$ git clone https://github.com/NDRBAX/wiki
+$ git clone https://github.com/NDRBAX/Encyclopedia
 
 # Access
-$ cd wiki
+$ cd Encyclopedia
+
+# Install dependencies
+$ pip install -r requirements.txt
+
+# Run 
+$ python manage.py runserver
 
 ```
 
