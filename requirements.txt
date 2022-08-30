@@ -1,7 +1,5 @@
 asgiref==3.5.2
-distlib==0.3.5
 Django==4.1
-filelock==3.8.0
-platformdirs==2.5.2
+django-crispy-forms==1.14.0
+markdown2==2.4.3
 sqlparse==0.4.2
-virtualenv==20.16.3
